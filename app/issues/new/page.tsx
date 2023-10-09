@@ -9,6 +9,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { createIssueSchema } from "@/app/validationSchema";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
@@ -37,7 +38,7 @@ const NewIssuePage = () => {
     }
   };
 
-  const calloutColor = error.includes("successfully") ? "green" : "red";
+  const calloutColor = error.includes("successfully") ? "green" : "red"; //Render calloutout component dynamically.
   return (
     <div className="max-w-xl">
       {error && (
@@ -49,11 +50,7 @@ const NewIssuePage = () => {
         <TextField.Root>
           <TextField.Input placeholder="Enter Title" {...register("title")} />
         </TextField.Root>
-        {errors && (
-          <Text color="red" as="p">
-            {errors.title?.message}
-          </Text>
-        )}
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
         <Controller
           name="description"
@@ -62,11 +59,7 @@ const NewIssuePage = () => {
             <SimpleMDE placeholder="Enter Description" {...field} />
           )}
         />
-        {errors && (
-          <Text color="red" as="p">
-            {errors.description?.message}
-          </Text>
-        )}
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button>Submit New Issue</Button>
       </form>
