@@ -42,6 +42,7 @@ const NewIssuePage = () => {
   };
 
   const calloutColor = error.includes("successfully") ? "green" : "red"; //Render calloutout component dynamically.
+
   return (
     <div className="max-w-xl">
       {error && (
