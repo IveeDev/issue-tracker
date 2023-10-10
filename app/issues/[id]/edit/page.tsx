@@ -11,8 +11,10 @@ const EditIssuePage = async ({ params }: Props) => {
     where: { id: parseInt(params.id) },
   });
 
+  const isEdit = !!issue;
+
   if (!issue) notFound();
-  return <IssueForm issue={issue} />;
+  return <IssueForm issue={issue} isEdit={isEdit} />;
 };
 
 export default EditIssuePage;
