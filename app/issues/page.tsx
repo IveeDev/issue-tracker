@@ -46,4 +46,7 @@ const IssuesPage = async () => {
   );
 };
 
+// disablling caching: We are forcing dynamic rendering
+export const dynamic = "force-dynamic";
+
 export default IssuesPage;

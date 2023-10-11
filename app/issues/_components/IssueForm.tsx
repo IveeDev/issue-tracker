@@ -51,6 +51,7 @@ const IssueForm = ({ issue, isEdit }: Props) => {
 
       setTimeout(() => {
         router.push("/issues");
+        router.refresh();
       }, 5000);
     } catch (error) {
       setSubmitting(false);
