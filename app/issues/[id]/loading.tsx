@@ -1,7 +1,7 @@
 import { Box, Flex, Card } from "@radix-ui/themes";
 import { Skeleton } from "@/app/components";
 
-const LoadingIssueDetailPage = () => {
+const LoadingIssueDetailPage = async () => {
   return (
     <Box className="max-w-xl">
       <Skeleton />
