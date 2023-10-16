@@ -13,6 +13,7 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import { Issue } from "@prisma/client";
 import SimpleMDE from "react-simplemde-editor";
+import toast, { Toaster } from "react-hot-toast";
 
 type IssueFormData = z.infer<typeof IssueSchema>;
 
@@ -40,10 +41,10 @@ const IssueForm = ({ issue, isEdit }: Props) => {
       // edit existing issue
       if (issue) {
         await axios.patch(`/api/issues/${issue.id}`, data);
-        setError("Issue updated successfully!");
+        toast.success("Issue updated successfully!");
       } else {
         await axios.post("/api/issues", data);
-        setError("Issue created successfully!"); // Set the success message for creation
+        toast.success("Issue created successfully!");
       }
 
       setTimeout(() => {
@@ -52,19 +53,12 @@ const IssueForm = ({ issue, isEdit }: Props) => {
       }, 5000);
     } catch (error) {
       setSubmitting(false);
-      setError("An unexpected error occurred.");
+      toast.error("An unexpected error occurred!");
     }
   };
 
-  const calloutColor = error.includes("successfully") ? "green" : "red"; //Render calloutout component dynamically.
-
   return (
     <div className="max-w-xl">
-      {error && (
-        <Callout.Root color={calloutColor} className="mb-5">
-          <Callout.Text>{error}</Callout.Text>
-        </Callout.Root>
-      )}
       <form className="space-y-4" onSubmit={handleSubmit(handleIssueForm)}>
         <TextField.Root>
           <TextField.Input
@@ -91,6 +85,7 @@ const IssueForm = ({ issue, isEdit }: Props) => {
           {isSubmitting && <Spinner />}
         </Button>
       </form>
+      <Toaster />
     </div>
   );
 };
