@@ -1,10 +1,21 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import Pagination from "./components/Pagination";
 
-export default function Home() {
+interface Props {
+  searchParams: { page: string };
+}
+
+export default function Home({ searchParams }: Props) {
   return (
     <div>
       Hello world
-      <Pagination itemCount={100} pageSize={10} currentPage={1} />
+      {/* <Pagination
+        itemCount={100}
+        pageSize={10}
+        currentPage={parseInt(searchParams.page)}
+      /> */}
     </div>
   );
 }
