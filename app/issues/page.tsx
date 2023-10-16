@@ -7,28 +7,34 @@ import { Status, Issue } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
 
 interface Props {
-  searchParams: { status: Status; orderBy: string };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
-  const colummns: { label: string; value: keyof Issue; className?: string }[] =
-    [
-      { label: "Issue", value: "title" },
-      { label: "Status", value: "status", className: "hidden md:table-cell" },
-      {
-        label: "CreatedAt",
-        value: "createdAt",
-        className: "hidden md:table-cell",
-      },
-    ];
+  const columns: { label: string; value: keyof Issue; className?: string }[] = [
+    { label: "Issue", value: "title" },
+    { label: "Status", value: "status", className: "hidden md:table-cell" },
+    {
+      label: "Created",
+      value: "createdAt",
+      className: "hidden md:table-cell",
+    },
+  ];
 
   const statuses = Object.values(Status);
   const validStatuses = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined;
 
+  const sortOrderBy = columns
+    .map((column) => column.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: "asc" }
+    : undefined;
+
   const issues = await prisma.issue.findMany({
     where: { status: validStatuses },
+    orderBy: sortOrderBy,
   });
 
   return (
@@ -37,7 +43,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
-            {colummns.map((column) => (
+            {columns.map((column) => (
               <Table.ColumnHeaderCell
                 key={column.value}
                 className={column.className}
