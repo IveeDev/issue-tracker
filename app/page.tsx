@@ -1,7 +1,4 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
-import Pagination from "./components/Pagination";
+import LatestIssues from "./LatestIssues";
 
 interface Props {
   searchParams: { page: string };
@@ -10,12 +7,7 @@ interface Props {
 export default function Home({ searchParams }: Props) {
   return (
     <div>
-      Hello world
-      {/* <Pagination
-        itemCount={100}
-        pageSize={10}
-        currentPage={parseInt(searchParams.page)}
-      /> */}
+      <LatestIssues />
     </div>
   );
 }
