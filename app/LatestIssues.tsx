@@ -6,7 +6,7 @@ import Link from "next/link";
 const LatestIssues = async () => {
   const issues = await prisma.issue.findMany({
     orderBy: { createdAt: "desc" },
-    take: 5,
+    take: 2,
     include: {
       assignedToUser: true,
     },
