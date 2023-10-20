@@ -1,6 +1,6 @@
 import prisma from "@/prisma/client";
 import { Flex } from "@radix-ui/themes";
-
+import { Metadata } from "next";
 import { Status } from "@prisma/client";
 import Pagination from "../components/Pagination";
 import IssueActions from "./IssueActions";
@@ -48,5 +48,10 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
 // disablling caching: We are forcing dynamic rendering
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Issue Tracking - Issue List",
+  description: "View all project issues",
+};
 
 export default IssuesPage;
