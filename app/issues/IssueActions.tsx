@@ -1,12 +1,16 @@
-import { Button, Flex } from "@radix-ui/themes";
+import { Box, Button, Flex } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import IssueStatusFilter from "./IssueStatusFilter";
+import PageSizeSelect from "./PageSizeSelect";
 
 const IssueActions = () => {
   return (
     <Flex justify="between">
-      <IssueStatusFilter />
+      <Box className="space-x-20">
+        <IssueStatusFilter />
+        {/* <PageSizeSelect /> */}
+      </Box>
       <Button>
         <Link href="/issues/new">New Issue</Link>
       </Button>

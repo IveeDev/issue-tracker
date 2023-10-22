@@ -1,10 +1,11 @@
 import prisma from "@/prisma/client";
-import { Flex } from "@radix-ui/themes";
-import { Metadata } from "next";
+import { Flex, Box } from "@radix-ui/themes";
+import { Metadata, GetServerSideProps } from "next";
 import { Status } from "@prisma/client";
 import Pagination from "../components/Pagination";
 import IssueActions from "./IssueActions";
 import IssueTable, { IssueQuery, columnsName } from "./IssueTable";
+import PageSizeSelect from "./PageSizeSelect";
 interface Props {
   searchParams: IssueQuery;
 }
@@ -23,8 +24,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
     : undefined;
 
   const page = parseInt(searchParams.page) || 1;
-  const pageSize = 10; // number of issues we want to fetch on a page
-
+  const pageSize = parseInt(searchParams.pageLength) || 10; // number of issues we want to fetch on a page
+  // console.log(pageSizex);
+  // const pageSize = 10;
   const issues = await prisma.issue.findMany({
     where: { status: validStatuses },
     orderBy: sortOrderBy,
@@ -39,6 +41,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
   return (
     <Flex direction="column" gap="3">
       <IssueActions />
+      <Box className="max-w-sm">
+        <PageSizeSelect />
+      </Box>
       <IssueTable issues={issues} searchParams={searchParams} />
       <Pagination
         pageSize={pageSize}
