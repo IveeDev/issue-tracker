@@ -9,6 +9,7 @@ import authOptions from "@/app/auth/authOptions";
 import AssigneeSelect from "./AssigneeSelect";
 import { cache } from "react";
 import StatusSelect from "./StatusSelect";
+import CommentIssue from "./CommentIssue";
 
 interface Props {
   params: { id: string };
@@ -29,6 +30,10 @@ const IssueDetailPage = async ({ params }: Props) => {
     <Grid columns={{ initial: "1", sm: "5" }} gap="5">
       <Box className="md:col-span-4">
         <IssueDetails issue={issue} />
+
+        <Box className="mt-5">
+          <CommentIssue />
+        </Box>
       </Box>
 
       {session && (
