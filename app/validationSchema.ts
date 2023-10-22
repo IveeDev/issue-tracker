@@ -18,4 +18,5 @@ export const PatchIssueSchema = z.object({
     .max(255)
     .optional()
     .nullable(),
+  status: z.string().min(1).max(255).optional(),
 });

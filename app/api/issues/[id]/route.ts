@@ -18,7 +18,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
 
-  const { assignedToUserId, description, title } = body;
+  const { assignedToUserId, description, title, status } = body;
 
   if (assignedToUserId) {
     const user = await prisma.user.findUnique({
@@ -28,6 +28,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     if (!user)
       return NextResponse.json({ error: "Invalid user" }, { status: 400 });
   }
+
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
   });
@@ -35,9 +36,18 @@ export async function PATCH(request: NextRequest, { params }: Props) {
   if (!issue)
     return NextResponse.json({ error: "Issue not found" }, { status: 404 });
 
+  // Update the issue status to "IN_PROGRESS" if the issue is assigned to a user and the current status is "OPEN"
+  const updatedStatus =
+    assignedToUserId && issue.status === "OPEN" ? "IN_PROGRESS" : status;
+
   const updatedIssue = await prisma.issue.update({
     where: { id: issue.id },
-    data: { title, description, assignedToUserId },
+    data: {
+      title,
+      description,
+      assignedToUserId,
+      status: updatedStatus,
+    },
   });
   return NextResponse.json(updatedIssue);
 }
