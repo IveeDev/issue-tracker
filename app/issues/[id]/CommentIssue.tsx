@@ -1,3 +1,4 @@
+"use client";
 import { Button, TextArea } from "@radix-ui/themes";
 
 const CommentIssue = () => {
