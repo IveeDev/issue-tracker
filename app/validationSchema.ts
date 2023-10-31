@@ -5,9 +5,6 @@ export const IssueSchema = z.object({
   description: z.string().min(1, "description is required.").max(65535),
 });
 
-export const CommentSchema = z.object({
-  content: z.string().min(1, "comment is required").max(65535),
-});
 
 export const PatchIssueSchema = z.object({
   title: z.string().min(1, "title is required.").max(255).optional(),
