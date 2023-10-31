@@ -37,7 +37,7 @@ Upon issue assignment:
 
 ### 5. UI/UX
 
-- **Radix UI and Tailwind CSS:** Utilizes Radix UI components and Tailwind CSS for a clean, responsive, and aesthetically pleasing user interface, ensuring a seamless user experience.
+- **Radix-UI and Tailwind CSS:** Utilizes Radix UI components and Tailwind CSS for a clean, responsive, and aesthetically pleasing user interface, ensuring a seamless user experience.
 
 ## Tech Stack
 
