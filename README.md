@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---
 
-## Getting Started
+# Issue Tracker App
 
-First, run the development server:
+The Issue Tracker App is a comprehensive platform developed using modern technologies like Next.js, Prisma, MySQL, TypeScript, NextAuth, Radix UI, and Tailwind CSS. It is designed to streamline issue reporting, management, and resolution for various projects.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Product Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Issue Tracker App serves as a centralized solution for project teams or individuals to efficiently report, monitor, and resolve issues or bugs encountered during the development or execution of their projects. By combining a user-friendly interface with powerful features, it aims to enhance collaboration and expedite issue resolution.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 1. Issue Management
 
-## Learn More
+Users can:
 
-To learn more about Next.js, take a look at the following resources:
+- **Create Issues:** Create detailed issue reports, specifying the problem, associated project, and relevant details.
+- **Edit and Delete Issues:** Modify or remove reported issues as needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Issue Status
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Issues can be categorized with various statuses:
 
-## Deploy on Vercel
+- **Open:** Indicates newly reported issues awaiting attention.
+- **Closed:** Represents issues that have been resolved or deemed no longer relevant.
+- **In Progress:** Assigned to a developer for resolution.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Automation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Upon issue assignment:
+
+- **Status Transition:** Issues automatically transition from 'Closed' to 'In Progress' when assigned to a developer. This feature streamlines the workflow and promptly alerts the developer about issues that need attention.
+
+### 4. User Authentication and Security
+
+- **NextAuth Integration:** Provides secure user authentication and access control to ensure data privacy and security.
+
+### 5. UI/UX
+
+- **Radix UI and Tailwind CSS:** Utilizes Radix UI components and Tailwind CSS for a clean, responsive, and aesthetically pleasing user interface, ensuring a seamless user experience.
+
+## Tech Stack
+
+- **Next.js:** Utilized for server-rendered React applications, offering high performance and SEO-friendly solutions.
+- **Prisma:** Provides a modern database toolkit for type-safe database access, facilitating efficient data management.
+- **MySQL:** The chosen relational database for storing issue-related data.
+- **TypeScript:** Adds type safety and improves developer productivity.
+- **NextAuth:** Ensures secure authentication and authorization for the application.
+- **Radix UI and Tailwind:** Used for building a consistent and visually appealing user interface.
+
+---
