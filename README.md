@@ -23,7 +23,7 @@ Issues can be categorized with various statuses:
 
 - **Open:** Indicates newly reported issues awaiting attention.
 - **Closed:** Represents issues that have been resolved or deemed no longer relevant.
-- **In Progress:** Assigned to a developer for resolution.
+- **InProgress:** Assigned to a developer for resolution.
 
 ### 3. Automation
 
